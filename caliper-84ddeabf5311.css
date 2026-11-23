@@ -1,0 +1,26 @@
+.experiments { display: flex; gap: 6px; margin-left: auto; flex-wrap: wrap; }
+.experiments a { color: var(--muted); text-decoration: none; font-size: 14px; letter-spacing: 0; font-weight: 500; border-radius: 6px; padding: 8px 12px; }
+.experiments a:hover { background: #293a35; color: var(--ink); }
+.experiments a[aria-current] { background: #293a2c; color: var(--lime); }
+.caliper-lab p { font-size: 16px; }
+.caliper-lab label, .caliper-lab button, .caliper-lab select { font-size: 14px; }
+.caliper-lab .state, .caliper-lab .tag { font-size: 13px; }
+.caliper-lab .scale-note, .caliper-lab .turn-help { font-size: 14px; }
+.caliper-lab .principle p { font-size: 14px; margin-top: 12px; }
+.caliper-lab .range-row span, .caliper-lab .direction { font-size: 13px; }
+.caliper-steps { display: grid; gap: 12px; margin: 20px 0; }
+.caliper-steps p { color: var(--muted); font-size: 14px; }
+#caliper, #caliper-scale { touch-action: none; }
+#caliper.draggable, #caliper-scale.draggable { cursor: grab; }
+#caliper.turning, #caliper-scale.turning { cursor: grabbing; }
+.caliper-lab .reading { font-size: 14px; }
+@media (max-width: 690px) {
+  .brand { flex-wrap: wrap; padding-top: 12px; padding-bottom: 12px; }
+  .experiments { margin-left: 0; width: 100%; }
+  .experiments a { padding-left: 8px; }
+  .caliper-lab .panel-head { gap: 8px; }
+  .caliper-lab .tag { font-size: 12px; }
+}
+
+.caliper-settings { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; max-width: 680px; margin-bottom: 22px; }
+@media (max-width: 420px) { .caliper-settings { grid-template-columns: 1fr; gap: 12px; } }

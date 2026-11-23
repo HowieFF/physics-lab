@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="拖动游标卡尺尺框，测量试件外径或厚度，练习20分度游标读数。">
+<title>游标卡尺 · 物理仿真实验室</title>
+<link rel="stylesheet" href="lab-5b903bea09d1.css">
+<link rel="stylesheet" href="caliper-84ddeabf5311.css">
+<script defer src="caliper-e4767a7a4792.js"></script>
+</head>
+<body class="caliper-lab">
+<header class="top"><div class="shell brand"><span class="mark" aria-hidden="true">∿</span><span>物理仿真实验室<small>PHYSICS LAB</small></span><nav class="experiments" aria-label="选择实验"><a href="index.html">螺旋测微器</a><a href="caliper.html" aria-current="page">游标卡尺</a></nav></div></header>
+<main class="shell">
+<div class="intro"><span class="eyebrow">长度测量</span><h1 id="caliper-title">游标卡尺</h1><p>选择卡尺分度与测量方式，拖动尺框，观察主尺和游标的刻线。</p></div>
+<div class="caliper-settings">
+<div><label for="caliper-precision">游标分度</label><select id="caliper-precision"><option value="10">10 分度 · 0.1 mm</option><option value="20" selected>20 分度 · 0.05 mm</option><option value="50">50 分度 · 0.02 mm</option></select></div>
+<div><label for="caliper-mode">测量方式</label><select id="caliper-mode"><option value="external">测外径 / 厚度</option><option value="internal">测内径</option><option value="depth">测深度</option></select></div>
+</div>
+<div class="layout">
+<div class="workbench">
+<section class="panel">
+<div class="panel-head"><h2>实验台</h2><span id="caliper-status" class="state" role="status">未接触</span></div>
+<div class="stage"><canvas id="caliper" width="960" height="400" tabindex="0" aria-label="可操作的游标卡尺，按住尺框左右拖动，左移闭合，右移张开。方向键细调，Shift加方向键快速调节。"></canvas></div>
+<div class="controls">
+<div class="range-row"><label for="caliper-position">尺框位置</label><span>量程 0–150 mm</span></div>
+<input id="caliper-position" type="range" min="0" max="15000" step="5" value="5000">
+<div class="direction" aria-hidden="true"><span>闭合</span><span>张开</span></div>
+<p class="turn-help">按住尺框左右拖动；按住 Shift 慢拖细调。也可聚焦实验图后用方向键调节。</p>
+</div>
+</section>
+<section class="panel">
+<div class="panel-head"><h2>刻度放大</h2><span class="tag" id="caliper-spec">20 分度 · 分度值 0.05 mm</span></div>
+<div class="scale"><canvas id="caliper-scale" width="960" height="270" tabindex="0" aria-label="主尺与游标放大图，可拖动下方游标调节开口。主尺单位毫米，游标标注格序号。"></canvas></div>
+<p class="scale-note" id="caliper-scale-note">先读游标零刻线左侧的主尺整毫米数，再找对齐的游标刻线。读数 = 主尺读数 + 对齐格序号 × 0.05 mm。放大窗口随尺框位置平移。</p>
+</section>
+</div>
+<aside>
+<section class="panel task">
+<div class="panel-head"><h2>测量任务</h2></div>
+<div class="task-body">
+<label for="caliper-sample">待测试件</label>
+<select id="caliper-sample"><option value="cylinder">试件 A · 圆柱</option><option value="block">试件 B · 量块</option><option value="plate">试件 C · 薄板</option><option value="zero">无试件 · 检查零点</option></select>
+<div class="caliper-steps"><p id="caliper-howto"></p><p>按住尺框或下方游标左右拖动，Shift 慢拖细调。先接触试件，再观察刻线。</p><p id="caliper-formula"></p></div>
+<form id="caliper-form">
+<label for="caliper-answer">你的读数</label>
+<div class="answer"><input id="caliper-answer" inputmode="decimal" autocomplete="off" placeholder="0.00" aria-describedby="caliper-feedback"><span>mm</span></div>
+<button class="primary" type="submit">检查读数</button>
+<p id="caliper-feedback" class="feedback" role="status"></p>
+</form>
+<div class="actions"><button type="button" id="caliper-hint" aria-expanded="false">显示读数</button><button type="button" id="caliper-reset">复位</button></div>
+<p id="caliper-reading" class="reading" hidden></p>
+</div>
+</section>
+<section class="panel principle"><h2>游标读数原理</h2><p id="caliper-principle"></p><p>主尺标注毫米数，游标下方数字表示格序号。显示读数后，绿色线标记对齐位置。</p></section>
+</aside>
+</div>
+</main>
+</body>
+</html>
