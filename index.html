@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="转动螺旋测微器，观察刻度，测量工件。">
+<title>螺旋测微器 · 物理仿真实验室</title>
+<link rel="stylesheet" href="lab-5b903bea09d1.css">
+<script defer src="lab-f2125a2cfba5.js"></script>
+</head>
+<body>
+<header class="top"><div class="shell brand"><span class="mark" aria-hidden="true">∿</span><span>物理仿真实验室<small>PHYSICS LAB</small></span><span class="category">长度测量</span></div></header>
+<main class="shell">
+<div class="intro"><span class="eyebrow">测量实验</span><h1>螺旋测微器</h1><p>转动旋钮夹住试件，再从两组刻度读出它的厚度。</p></div>
+<div class="layout">
+<div class="workbench">
+<section class="panel instrument" aria-labelledby="bench-title">
+<div class="panel-head"><h2 id="bench-title">实验台</h2><span id="status" class="state" role="status">未接触</span></div>
+<div class="stage"><canvas id="instrument" tabindex="0" width="780" height="340" aria-label="螺旋测微器结构示意图。可在旋钮上拖动或滚动，上推闭合，下拉张开。"></canvas></div>
+<div class="controls">
+<div class="range-row"><label for="position">测微螺杆位置</label><span>量程 0–25 mm</span></div>
+<input id="position" type="range" min="0" max="2500" step="0.1" value="1250" aria-valuetext="调节螺杆开口">
+<div class="direction" aria-hidden="true"><span>闭合</span><span>张开</span></div>
+<p class="turn-help">大旋钮快速调节，右端微调旋钮细调；上推闭合，下拉张开。</p>
+</div>
+</section>
+<section class="panel scale-panel" aria-labelledby="scale-title">
+<div class="panel-head"><h2 id="scale-title">刻度放大</h2><span class="tag">每格 0.01 mm · 估读到 0.001 mm</span></div>
+<div class="scale"><canvas id="scale" tabindex="0" width="780" height="200" role="img" aria-label="固定刻度与可动刻度放大图"></canvas></div>
+<p class="scale-note">固定刻度下方为整毫米，上方为半毫米。先读可动刻度左缘露出的最后一条固定刻线，再读水平基准线对应的可动刻度，在相邻刻线之间估读，可动刻度读数保留一位小数。读数 = 固定刻度读数 + 可动刻度读数 × 0.01 mm。</p>
+</section>
+</div>
+<aside>
+<section class="panel task" aria-labelledby="task-title">
+<div class="panel-head"><h2 id="task-title">测量任务</h2></div>
+<div class="task-body">
+<label for="sample">待测试件</label>
+<select id="sample"><option value="sheet">试件 A · 金属片</option><option value="block">试件 B · 小量块</option><option value="rod">试件 C · 圆柱销</option><option value="zero">无试件 · 检查零点</option></select>
+<div class="instructions">
+<p><b>1</b><span>按住旋钮上下拖动，刻度随旋钮一起转动。</span></p>
+<p><b>2</b><span>接近试件时，拖动右端微调旋钮，接触后继续转动会打滑，螺杆停止前进。</span></p>
+<p><b>3</b><span>固定刻度读数 + 可动刻度读数 × 0.01 mm，结果保留三位小数。</span></p>
+</div>
+<form id="answer-form">
+<label for="answer">你的读数</label>
+<div class="answer"><input id="answer" inputmode="decimal" autocomplete="off" placeholder="0.000" aria-describedby="feedback"><span>mm</span></div>
+<button class="primary" type="submit">检查读数</button>
+<p id="feedback" class="feedback" role="status"></p>
+</form>
+<div class="actions"><button type="button" id="hint" aria-expanded="false">显示读数</button><button type="button" id="reset">复位</button></div>
+<div id="reading" class="reading" hidden></div>
+</div>
+</section>
+<section class="panel principle"><h2>螺旋传动</h2><p>旋钮每转一圈，螺杆移动 <strong>0.50 mm</strong>。一圈分成 50 格，所以每格对应 <strong>0.01 mm</strong>。微调旋钮通过棘轮限制测力，接触后会空转。此处将微调拖动灵敏度设为大旋钮的 1/5，便于估读。</p></section>
+</aside>
+</div>
+</main>
+</body>
+</html>
